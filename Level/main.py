@@ -1,6 +1,7 @@
 import pygame, sys, time
 from settings import *
 from pygame.locals import QUIT
+from level import Level
 
 
 class Game:
@@ -8,6 +9,9 @@ class Game:
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        pygame.display.set_caption('Legend of Abish')
+        self.clock = pygame.time.Clock()
+        self.level = Level()
 
     def run(self):
         while True:
@@ -17,6 +21,7 @@ class Game:
                     sys.exit()
 
             self.screen.fill('black')
+            self.level.run()
             pygame.display.update()
             self.clock.tick(FPS)
 
